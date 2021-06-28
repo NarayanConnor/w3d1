@@ -75,19 +75,33 @@ class Array
     end
 
 
+    def my_rotate(int=1)
+        new_arr=self.dup
+        if int>0
+            int.times do 
+                new_arr<<new_arr.shift
+            end
+        else 
+            
+            int.abs.times do 
+                new_arr.unshift(new_arr.pop)
+            end
+        end
+        new_arr
+    end    
+
+    def my_join(sap='')
+        str=''
+        self.each_with_index { |ele,idx| str+= (idx<self.length-1) ? ele+ sap :  ele}
+        str
+    end
+
 end    
 
 
-a = [ 4, 5, 6 ]
-b = [ 7, 8, 9 ]
-p [1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
-p a.my_zip([1,2], [8])   # => [[4, 1, 8], [5, 2, nil], [6, nil, nil]]
-p [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
-
-c = [10, 11, 12]
-d = [13, 14, 15]
-p [1, 2].my_zip(a, b, c, d) # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
-
+a = [ "a", "b", "c", "d" ]
+p a.my_join         # => "abcd"
+p a.my_join("$")    # => "a$b$c$d"
 
 
 
