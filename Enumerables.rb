@@ -96,12 +96,15 @@ class Array
         str
     end
 
-end    
 
+    def my_reverse()
+        new_arr = []
+        self.each {|ele| new_arr.unshift(ele)}
+        new_arr
+    end
 
-a = [ "a", "b", "c", "d" ]
-p a.my_join         # => "abcd"
-p a.my_join("$")    # => "a$b$c$d"
+end 
+
 
 
 
